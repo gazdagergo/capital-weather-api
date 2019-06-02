@@ -1,57 +1,22 @@
-Express & ES6 REST API Boilerplate
-==================================
+# node-es6-heroku-boilerplate
 
-This is a straightforward boilerplate for building REST APIs with ES6 and Express.
+Simple boilerplate for running ES6+ features on a Node server - specifically on a Heroku environment, although there are only a couple of bits which have been altered to make the Heroku environment work which are:
 
-- ES6 support via [babel](https://babeljs.io)
-- REST resources as middleware via [resource-router-middleware](https://github.com/developit/resource-router-middleware)
-- CORS support via [cors](https://github.com/troygoode/node-cors)
-- Body Parsing via [body-parser](https://github.com/expressjs/body-parser)
+## Heroku specific
 
-> Tip: If you are using [Mongoose](https://github.com/Automattic/mongoose), you can automatically expose your Models as REST resources using [restful-mongoose](https://git.io/restful-mongoose).
+* The Procfile - used to execute a web hook on deployment
+* `"start": "babel-node server.js"` in the package.json file
 
+## Front-end app folder
 
+There's a directory, `/app` which can be used to hold a Vue/React/React-Native/whatever front end system. These can be decoupled completely from the back end, but sometimes it can be good to keep them together in source control while it's being developed (I like to anyway). To read more, [see here](https://github.com/mars/heroku-cra-node).
 
-Getting Started
----------------
+## Node server
 
-```sh
-# clone it
-git clone git@github.com:developit/express-es6-rest-api.git
-cd express-es6-rest-api
+The node server has the following basic elements which I end up using in every project:
 
-# Make it your own
-rm -rf .git && git init && npm init
-
-# Install dependencies
-npm install
-
-# Start development live-reload server
-PORT=8080 npm run dev
-
-# Start production server:
-PORT=8080 npm start
-```
-Docker Support
-------
-```sh
-cd express-es6-rest-api
-
-# Build your docker
-docker build -t es6/api-service .
-#            ^      ^           ^
-#          tag  tag name      Dockerfile location
-
-# run your docker
-docker run -p 8080:8080 es6/api-service
-#                 ^            ^
-#          bind the port    container tag
-#          to your host
-#          machine port   
-
-```
-
-License
--------
-
-MIT
+* Uses routes in a separate folder to keep things clean! These are great for API endpoints, or can be used to group pages if serving HTML content to a website.
+* Uses Mongoose which is created and connected in a separate folder, `/util`, alongside a **User** model which is exported for use around the server.
+* Uses ESLint with pre-defined Node and ES6 rules.
+* Uses **Environment variables** with the help of the **dotenv** npm package - these are hidden fron Git source control so secret information isn't pushed publically. When used with cloud systems (like Heroku) the environment variables are added separately. With Heroku this can be done in the admin area or CLI.
+  - I've added a `.env-sample` file here to show in action (enables the use of `process.env.MLAB_CONNECTION` in the `/util/mongo.js` file). It should be called `.env`.
