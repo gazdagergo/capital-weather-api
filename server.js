@@ -1,10 +1,11 @@
 require('dotenv').config();
-const express = require('express');
-const path = require('path');
-const http = require('http');
-const cors = require('cors');
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
+import express from 'express';
+import path from 'path';
+import http from 'http';
+import cors from 'cors';
+import morgan from 'morgan';
+import bodyParser from 'body-parser';
+import { getCities } from './queries';
 
 const app = express();
 
@@ -13,6 +14,8 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'dist')));
+
+app.get('/cities', getCities);
 
 app.get('/api', (req, res) => {
 	res.json({ version: '1'})
