@@ -31,7 +31,7 @@ export const getCapitals = (req, res)  => {
   client.query('SELECT * FROM capitals', (err, result) => {
     if (err) throw err;
     res.status(200).json(result.rows);
-    client.end();
+    // client.end();
   });
 
 }
