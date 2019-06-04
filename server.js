@@ -5,7 +5,7 @@ import http from 'http';
 import cors from 'cors';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import { getCities } from './queries';
+import { getCapitals } from './queries';
 
 const app = express();
 
@@ -15,7 +15,7 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.get('/cities', getCities);
+app.get('/cities', getCapitals);
 
 app.get('/api', (req, res) => {
 	res.json({ version: '1'})
