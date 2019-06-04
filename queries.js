@@ -28,7 +28,7 @@ export const getCapitals = (req, res)  => {
 
   client.connect();
 
-  client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, result) => {
+  client.query('SELECT * FROM capitals', (err, result) => {
     if (err) throw err;
     res.status(200).json(result.rows);
     client.end();
