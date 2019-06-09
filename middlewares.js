@@ -4,6 +4,8 @@ export const getCatitalWeather = (req, res) => {
   if (req.params.cityName === 'Berlin') {
     json = {
       cityId: 196,
+      cityName: 'Berlin',
+      countryCode: 'DE',
       sunriseDate: '09:37',
       sunsetDate: '15:42',
       currentTemp: '15',
@@ -11,12 +13,14 @@ export const getCatitalWeather = (req, res) => {
       tempMin: '12',
       tempUnit: '˚C',
       weatherDesc: 'thunderstorm',
-      weatherIcon: 'wi_day_thunderstorm',
+      weatherIcon: 'wi-day-thunderstorm',
     }
   }
   if (req.params.cityName === 'Budapest') {
     json = {
       cityId: 61,
+      cityName: 'Budapest',
+      countryCode: 'HU',
       sunriseDate: '09:21',
       sunsetDate: '16:22',
       currentTemp: '23',
