@@ -1,4 +1,4 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
 import express from 'express';
 import path from 'path';
 import http from 'http';
@@ -8,6 +8,7 @@ import bodyParser from 'body-parser';
 import { getCapitals, getSavedCities } from './queries';
 import { getCatitalWeather } from './middlewares';
 
+dotenv.config();
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
