@@ -5,7 +5,8 @@ import http from 'http';
 import cors from 'cors';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import { getCapitals } from './queries';
+import { getCapitals, getSavedCities } from './queries';
+import { getCatitalWeather } from './middlewares';
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.get('/capitals', getCapitals);
+app.get('/saved-cities', getSavedCities);
 app.get('/city/:cityName/:countryCode', getCatitalWeather)
 
 app.get('/api', (req, res) => {
