@@ -15,7 +15,7 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.get('/cities', getCapitals);
+app.get('/capitals', getCapitals);
 
 app.get('/api', (req, res) => {
 	res.json({ version: '1'})
