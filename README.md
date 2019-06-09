@@ -1,22 +1,20 @@
-# node-es6-heroku-boilerplate
+# capital-weather-api
 
-Simple boilerplate for running ES6+ features on a Node server - specifically on a Heroku environment, although there are only a couple of bits which have been altered to make the Heroku environment work which are:
+Node ES6 based rest api prepared to be hosted on Heroku.
 
 ## Heroku specific
 
 * The Procfile - used to execute a web hook on deployment
 * `"start": "babel-node server.js"` in the package.json file
 
-## Front-end app folder
+## Resources
+https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb
 
-There's a directory, `/app` which can be used to hold a Vue/React/React-Native/whatever front end system. These can be decoupled completely from the back end, but sometimes it can be good to keep them together in source control while it's being developed (I like to anyway). To read more, [see here](https://github.com/mars/heroku-cra-node).
+pg connect
+https://blog.logrocket.com/setting-up-a-restful-api-with-node-js-and-postgresql-d96d6fc892d8/
 
-## Node server
+Postgres express user JWT
+https://github.com/mateo-io/express-postgres-boilerplate/blob/master/server/controllers/user.js
 
-The node server has the following basic elements which I end up using in every project:
 
-* Uses routes in a separate folder to keep things clean! These are great for API endpoints, or can be used to group pages if serving HTML content to a website.
-* Uses Mongoose which is created and connected in a separate folder, `/util`, alongside a **User** model which is exported for use around the server.
-* Uses ESLint with pre-defined Node and ES6 rules.
-* Uses **Environment variables** with the help of the **dotenv** npm package - these are hidden fron Git source control so secret information isn't pushed publically. When used with cloud systems (like Heroku) the environment variables are added separately. With Heroku this can be done in the admin area or CLI.
-  - I've added a `.env-sample` file here to show in action (enables the use of `process.env.MLAB_CONNECTION` in the `/util/mongo.js` file). It should be called `.env`.
+https://github.com/aautio/react-express-postgres-heroku

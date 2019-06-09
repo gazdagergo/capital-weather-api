@@ -1,14 +1,15 @@
-require('dotenv').config();
-const express = require('express');
-const path = require('path');
-const http = require('http');
-const cors = require('cors');
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-const mongoUtil = require('./util/mongo');
+import dotenv from 'dotenv';
+import express from 'express';
+import path from 'path';
+import http from 'http';
+import cors from 'cors';
+import morgan from 'morgan';
+import bodyParser from 'body-parser';
+import { getCapitals, getSavedCities } from './queries';
+import { getCatitalWeather } from './middlewares';
 
+dotenv.config();
 const app = express();
-const apiEndpoint = require('./routes/api-endpoint');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -16,11 +17,9 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'dist')));
 
-/* mongoUtil.connectToServer(function(err) {
-	if (err) return console.log(err);
-}); */
-
-// app.use('/api', apiEndpoint);
+app.get('/capitals', getCapitals);
+app.get('/saved-cities', getSavedCities);
+app.get('/city/:cityName/:countryCode', getCatitalWeather)
 
 app.get('/api', (req, res) => {
 	res.json({ version: '1'})
