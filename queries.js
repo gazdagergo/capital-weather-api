@@ -36,7 +36,8 @@ export const getCapitals = (req, res)  => {
 
 export const getSavedCities = (req, res)  => {
   const  query = `SELECT
-	saved_cities.city_id city_id,
+    saved_cities.id id,
+    saved_cities.city_id city_id,
     capitals.capital_name capital_name,
     capitals.country_code country_code
   FROM
