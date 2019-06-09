@@ -16,6 +16,7 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.get('/capitals', getCapitals);
+app.get('/city/:cityName/:countryCode', getCatitalWeather)
 
 app.get('/api', (req, res) => {
 	res.json({ version: '1'})
