@@ -5,8 +5,7 @@ import http from 'http';
 import cors from 'cors';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import { getCapitals, getSavedCities } from './queries';
-import { getCatitalWeather } from './middlewares';
+import { getCapitals, getSavedCities, getCatitalWeather } from './queries';
 
 dotenv.config();
 const app = express();
