@@ -1,20 +1,19 @@
 # capital-weather-api
 
-Node ES6 based rest api prepared to be hosted on Heroku.
+REST based api for get weather info of capitals.
 
-## Heroku specific
+## How to start locally
+`$ git clone https://github.com/gazdagergo/capital-weather-api.git`
 
-* The Procfile - used to execute a web hook on deployment
-* `"start": "babel-node server.js"` in the package.json file
+`$ cd capital-weather-api`
 
-## Resources
-https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb
+`$ npm i`
 
-pg connect
-https://blog.logrocket.com/setting-up-a-restful-api-with-node-js-and-postgresql-d96d6fc892d8/
+`$ npm start`
 
-Postgres express user JWT
-https://github.com/mateo-io/express-postgres-boilerplate/blob/master/server/controllers/user.js
+You can reach the API endpoints on `http://localhost:1337`
 
 
+
+### Bootstrapped from
 https://github.com/aautio/react-express-postgres-heroku
