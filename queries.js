@@ -46,7 +46,7 @@ export const getCatitalWeather = (req, res) => {
 
     const {
       description: weatherDesc
-    } = cityWeatherData.list[0].weather;
+    } = cityWeatherData.list[0].weather[0];
 
     const {
       id: cityId,
